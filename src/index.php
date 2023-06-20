@@ -1,3 +1,15 @@
+<?php 
+require("koneksi.php");
+
+
+$ppts = queryppt("SELECT * FROM `Power Point Template` ");
+
+
+
+?>
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -6,8 +18,8 @@
   <link href="../../dist/output.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
- <script src="https://cdn.tailwindcss.com"></script>
   <style>
 
 .contentGameMobile {
@@ -108,8 +120,17 @@
         </svg>
       </li>
     </ul>
-		<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
-		<a class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
+    <div class="flex">
+		<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">
+    <img src="../assets/github.svg" alt="">
+    </a>
+		<a class="hidden lg:inline-block py-2 px-6  hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">
+    <img src="../assets/brokenlink.png" alt="">
+    </a>
+		<a class="hidden lg:inline-block py-2 px-6  hover:bg-orange-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">
+    <img src="../assets/buycoffe.png" alt="">
+    </a>
+</div>
 	</nav>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -165,28 +186,29 @@
    
     </div>
   <!-- akhir game -->
+
+
+
     <!-- awal power point template -->
     <h1 class="md:px-8 px-2 mb-4 text-3xl font-bold text-black mt-12">Priview Power Point Text</h1>
     <section class="flex flex-row flex-wrap mx-auto">
+      <?php foreach($ppts as $ppt) : ?>
       <!-- Card Component -->
-      <div
-          class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
-        >
-                    
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3">                   
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
           <a href="#">
-              <img class="rounded-t-lg" src="../assets/ppt/template-1.png" alt="" />
+              <img class="rounded-t-lg" src="../assets/ppt/<?= $ppt["image"] ?>" alt="" />
           </a>
           <div class="p-5">
               <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Power Point Template</h5>
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Power Point Template</h5>
               </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Template Power Point Teks paling premium dan editable</p>
+              <p class="mb-3 font-normal text-gray-700">Template Power Point Teks paling premium dan editable</p>
               <section class=" py-2 mt-2">
-                <a href="https://www.canva.com/design/DAFmOnjxdJY/roe6jvzac7gLzU8krbxCug/view?utm_content=DAFmOnjxdJY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                <a href="<?= $ppt["link"] ?>" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                  <span class="relative px-5 py-2.5 transition-all ease-in text-black duration-75  rounded-md group-hover:bg-opacity-0 bg-blue-500">
                       Edit On canva
-                  </span>
+                  </span> 
                   <div class="flex flex-row items-center">
                     <div
                       class="text-xs font-medium text-gray-500 flex flex-row items-center mr-2"
@@ -200,16 +222,18 @@
         </div>
 
         </div>
+    
+      <!-- Card Component -->
+    <?php endforeach; ?>
+    
+    
       </section>
       <!-- akhir component -->
-
-
-
 
     <!-- awal template cv -->
     <h1 class="md:px-8 px-2 mb-4 text-3xl font-bold text-black mt-12">Priview template cv</h1>
     <!-- This is an example component -->
-<section class="flex flex-row flex-wrap mx-auto">
+    <section class="flex flex-row flex-wrap mx-auto">
   <!-- Card Component -->
   <div
       class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
@@ -252,8 +276,8 @@
         </p>
         <hr class="border-gray-300" />
         <section class="px-4 py-2 mt-2">
-          <a href="https://www.canva.com/design/DAFmOnjxdJY/roe6jvzac7gLzU8krbxCug/view?utm_content=DAFmOnjxdJY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          <a href="https://www.canva.com/design/DAFmOnjxdJY/roe6jvzac7gLzU8krbxCug/view?utm_content=DAFmOnjxdJY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-blue-600  rounded-md group-hover:bg-opacity-0">
                 Edit On canva
             </span>
             <div class="flex flex-row items-center">
@@ -267,50 +291,44 @@
         </section>
       </div>
     </div>
-  </section>
+    <!-- Card Component -->
+    </section>
      <!-- akhir template cv -->
 
 
-
      <!-- awal Template Wordpress -->
-
-
-
      <h1 class="md:px-8 px-2 mb-4 text-3xl font-bold text-black mt-12">Priview Wordpress Theme</h1>
      <section class="flex flex-row flex-wrap mx-auto">
        <!-- Card Component -->
-       <div
-           class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
-         >
-           
- <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-   <a href="#">
-       <img class="rounded-t-lg" src="../assets/wptemplate/avada-theme-free-download.png" alt="" />
-   </a>
-   <div class="p-5">
-       <a href="#">
-           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wordpress Template</h5>
-       </a>
-       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Theme Wordpress pro dan paling premium free download no ads</p>
-       <section class=" py-2 mt-2">
-        <button id="buttonDownload" class="group rounded-md shadow bg-blue-500 text-white cursor-pointer flex justify-between items-center overflow-hidden transition-all hover:glow">
-          <div class="relative w-12 h-12 bg-white bg-opacity-20 text-white flex justify-center items-center transition-all">
-            <svg id="arrow" class="w-4 h-4 transition-all group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-            <svg id="check" class="absolute z-10 w-0 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div id="progress" class="absolute w-full h-0 bg-white bg-opacity-20 top-0 duration-200"></div>
+       <div class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3">    
+          <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+            <div>
+                <img class="rounded-t-lg" src="../assets/wptemplate/avada-theme-free-download.png" alt="" />
+            </div>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Wordpress Template</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 ">Theme Wordpress pro dan paling premium free download no ads</p>
+                <section class=" py-2 mt-2">
+                  <button id="buttonDownload" class="group rounded-md shadow bg-blue-500 text-white cursor-pointer flex justify-between items-center overflow-hidden transition-all hover:glow">
+                    <div class="relative w-12 h-12 bg-white bg-opacity-20 text-white flex justify-center items-center transition-all">
+                      <svg id="arrow" class="w-4 h-4 transition-all group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                      </svg>
+                      <svg id="check" class="absolute z-10 w-0 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <div id="progress" class="absolute w-full h-0 bg-white bg-opacity-20 top-0 duration-200"></div>
+                    </div>
+                    <p class="px-5">Download.zip</p>
+                  </button>
+                </section>
+            </div>
           </div>
-          <p class="px-5">Download.zip</p>
-        </button>
-       </section>
-   </div>
- </div>
- 
-         </div>
-       </section>
+        </div>
+         <!-- Card Component -->
+     </section>
        <!-- akhir component -->
  
      <!-- akhir  Template Wordpress -->
