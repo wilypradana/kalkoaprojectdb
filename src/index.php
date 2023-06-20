@@ -1,8 +1,11 @@
 <?php 
+error_reporting(E_ALL);  ini_set('display_errors', '1');
 require("koneksi.php");
 
 
-$ppts = queryppt("SELECT * FROM `Power Point Template` ");
+$ppts = queryppt("SELECT * FROM `Power Point Template`");
+$cvs = querycv("SELECT * FROM `template cv`");
+$wordpresss = querywp("SELECT * FROM `wordpress template`");
 
 
 
@@ -234,6 +237,7 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
     <h1 class="md:px-8 px-2 mb-4 text-3xl font-bold text-black mt-12">Priview template cv</h1>
     <!-- This is an example component -->
     <section class="flex flex-row flex-wrap mx-auto">
+    <?php foreach($cvs as $cv) : ?>
   <!-- Card Component -->
   <div
       class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
@@ -243,7 +247,7 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
       >
         <div class="md:flex-shrink-0">
           <img
-            src="../assets/cv/0001.png"
+            src="../assets/cv/<?= $cv["image"] ?>"
             alt="Blog Cover"
             class="object-contain w-full rounded-lg rounded-b-none md:h-56"
           />
@@ -272,11 +276,11 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
         <p
           class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
         >
-        Jika Anda sedang mencari template CV terbaik yang kompatibel dengan sistem pelacakan aplikasi (ATS), kami memiliki pilihan yang tepat untuk Anda. Template CV kami dirancang khusus untuk memastikan informasi Anda dapat dibaca dengan baik oleh ATS, sehingga meningkatkan kesempatan Anda untuk dipertimbangkan oleh perusahaan. Dengan desain yang menarik dan profesional, Anda dapat menonjol dari para pesaing dan mengesankan perekrut. Dapatkan template CV ATS terbaik untuk mengoptimalkan peluang karir Anda!
+       cv ats premium dan editable
         </p>
         <hr class="border-gray-300" />
         <section class="px-4 py-2 mt-2">
-          <a href="https://www.canva.com/design/DAFmOnjxdJY/roe6jvzac7gLzU8krbxCug/view?utm_content=DAFmOnjxdJY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+          <a href="<?= $cv["link"] ?>" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
             <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-blue-600  rounded-md group-hover:bg-opacity-0">
                 Edit On canva
             </span>
@@ -292,6 +296,7 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
       </div>
     </div>
     <!-- Card Component -->
+    <?php endforeach; ?>
     </section>
      <!-- akhir template cv -->
 
@@ -299,11 +304,13 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
      <!-- awal Template Wordpress -->
      <h1 class="md:px-8 px-2 mb-4 text-3xl font-bold text-black mt-12">Priview Wordpress Theme</h1>
      <section class="flex flex-row flex-wrap mx-auto">
+
+     <?php foreach($wordpresss as $wp) : ?>
        <!-- Card Component -->
        <div class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3">    
           <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
             <div>
-                <img class="rounded-t-lg" src="../assets/wptemplate/avada-theme-free-download.png" alt="" />
+                <img class="rounded-t-lg" src="../assets/wptemplate/<?=$wp["image"]?>" alt="" />
             </div>
             <div class="p-5">
                 <a href="#">
@@ -328,6 +335,8 @@ $ppts = queryppt("SELECT * FROM `Power Point Template` ");
           </div>
         </div>
          <!-- Card Component -->
+
+         <?php endforeach; ?>
      </section>
        <!-- akhir component -->
  

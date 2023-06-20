@@ -144,8 +144,9 @@ link.addEventListener("click", () => {
   }, 0);
 });
 button.addEventListener("click", () => {
-  window.location.href = "https://www.mediafire.com/file/b7xyf0kr44q0v1l/Avada-theme-package-v7.10.1.zip";
+  window.location.href = "<?= $wp['link'] ?>";
 });
+
 function reset() {
   link.classList.remove("hidden");
 }
