@@ -2,7 +2,7 @@
 require "koneksi.php";
 
 if ( isset($_POST["submit"])) {
-  if (addppt($_POST) > 0) {
+  if (addwp($_POST) > 0) {
     echo "berhasil";
   }else{
     echo "gagal"; 
