@@ -1,6 +1,7 @@
-<?php 
-require("koneksi.php");
-$ppts = queryppt("SELECT * FROM `ppt_table`");
+<?php
+
+require("../koneksi.php");
+$poster = queryposter("SELECT * FROM `template_poster`");
 ?>
 
 
@@ -9,21 +10,21 @@ $ppts = queryppt("SELECT * FROM `ppt_table`");
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Template PPT</title>
+    <title>Template CV</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
   <body>
     <div class="container" style="margin-top: 90px;">
         <div class="row">
-            <?php foreach($ppts as $ppt) : ?>
+            <?php foreach($poster as $poster) : ?>
           <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
             <div class="card">
-              <img src="../../../assets/ppt/<?=  $ppt["image"] ?>" class="card-img-top" alt="...">
+              <img src="../../../assets/poster/<?=  $poster["image"] ?>" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">template ppt</h5>
+                <h5 class="card-title">template poster</h5>
                 <p class="card-text">ubah link mati dan delete jika kena copyright</p>
-                <a href="#" class="btn btn-warning">delete</a>
-                <a href="#" class="btn btn-success">edit</a>
+                <a href="../delete/hapus.php?id=<?=  $poster["id"] ?>&table=template_poster" class="btn btn-warning">delete</a>
+                <a href="../ubah/ubah.php?id=<?=  $poster["id"] ?>" class="btn btn-success">edit</a>
               </div>
             </div>
           </div>

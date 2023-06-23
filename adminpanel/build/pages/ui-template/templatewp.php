@@ -1,5 +1,5 @@
 <?php 
-require("koneksi.php");
+require("../koneksi.php");
 $wps = querywp("SELECT * FROM `wp_table`");
 ?>
 
@@ -18,12 +18,12 @@ $wps = querywp("SELECT * FROM `wp_table`");
             <?php foreach($wps as $wp) : ?>
           <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
             <div class="card">
-              <img src="../../../assets/wptemplate/<?=  $wp["image"] ?>" class="card-img-top" alt="...">
+              <img src="../../../../assets/wptemplate/<?=  $wp["image"] ?>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">template wp</h5>
                 <p class="card-text">ubah link mati dan delete jika kena copyright</p>
-                <a href="#" class="btn btn-warning">delete</a>
-                <a href="#" class="btn btn-success">edit</a>
+                <a href="../delete/hapus.php?id=<?=  $wp["id"] ?>&table=wp_table" class="btn btn-warning">delete</a>
+                <a href="../ubah/ubah.php?id=<?=  $wp["id"] ?>" class="btn btn-success">edit</a>
               </div>
             </div>
           </div>

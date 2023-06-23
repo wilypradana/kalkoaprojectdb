@@ -2,7 +2,7 @@
 require "koneksi.php";
 
 if ( isset($_POST["submit"])) {
-  if (addcv($_POST) > 0) {
+  if (addposter($_POST) > 0) {
     echo "berhasil";
   }else{
     echo "gagal"; 
@@ -10,6 +10,7 @@ if ( isset($_POST["submit"])) {
 }
 
  ?>
+
 <!doctype html>
 <html>
 <head>
@@ -125,12 +126,13 @@ if ( isset($_POST["submit"])) {
     </nav>
     <div class="flex min-h-screen items-center justify-start">
   <div class="mx-auto w-1/2 max-w-lg">
-    <h1 class="text-4xl font-medium text-center text-white">ADD CV</h1>
-    <form action="" class="mt-10" method="post">
-      <input type="hidden"/>
+    <h1 class="text-4xl font-medium text-center text-white">ADD PPT</h1>
+    <form action="" class="mt-10">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+      
       <div class="grid gap-6 sm:grid-cols-2">
         <div class="relative z-0">
-          <input type="text" name="url" class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " autocomplete="off"/>
+          <input type="text" name="link" class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " autocomplete="off"/>
           <label class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Link Canva</label>
         </div>
         
