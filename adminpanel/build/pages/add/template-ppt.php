@@ -1,9 +1,14 @@
 <?php 
-require "koneksi.php";
+require "../koneksi.php";
 
 if ( isset($_POST["submit"])) {
   if (addppt($_POST) > 0) {
-    echo "berhasil";
+    echo "
+    <script>
+    alert('berhasil ditambahkan')
+    </script>
+    
+    ";
   }else{
     echo "gagal"; 
   }
@@ -127,12 +132,11 @@ if ( isset($_POST["submit"])) {
     <div class="flex min-h-screen items-center justify-start">
   <div class="mx-auto w-1/2 max-w-lg">
     <h1 class="text-4xl font-medium text-center text-white">ADD PPT</h1>
-    <form action="" class="mt-10">
-      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-      
+    <form action="" class="mt-10" method="post" enctype="multipart/form-data">
+      <input type="hidden"/>
       <div class="grid gap-6 sm:grid-cols-2">
         <div class="relative z-0">
-          <input type="text" name="link" class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " autocomplete="off"/>
+          <input type="text" name="link" class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-white focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " autocomplete="off"/>
           <label class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Link Canva</label>
         </div>
         
@@ -142,8 +146,8 @@ if ( isset($_POST["submit"])) {
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
             <h2 class="mt-4 text-xl font-medium text-gray-700 tracking-wide">Image File For Sampul</h2>
-            <p class="mt-2 text-gray-500 tracking-wide">Upload or drag &amp; drop your file SVG, PNG, JPG, or GIF.</p>
-            <input id="dropzone-file" type="file" class="hidden" />
+            <p class="mt-2 text-gray-500 tracking-wide">Upload or drag &amp; drop your file SVG, PNG,  or JPG.</p>
+            <input id="dropzone-file" type="file" class="hidden" name="gambar"/>
           </label>
         </div>
       </div>

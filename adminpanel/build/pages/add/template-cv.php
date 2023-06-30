@@ -1,16 +1,20 @@
 <?php 
-require "koneksi.php";
+error_reporting(E_ALL);  ini_set('display_errors', '1');
+
+require "../koneksi.php";
 
 if ( isset($_POST["submit"])) {
   if (addcv($_POST) > 0) {
     echo "
     <script>
     alert('data berhasil ditambahkan')
-    window.location.href = 'http://localhost/kalkoaProject/adminpanel/build/pages/templatecv.php'
+    window.location.href = 'template-cv.php'
     </script>
     
   
     "; 
+    die();
+
   }else{
     echo "
     <script>

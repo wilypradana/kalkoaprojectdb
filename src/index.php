@@ -6,7 +6,7 @@ require("koneksi.php");
 $ppts = queryppt("SELECT * FROM `ppt_table`");
 $cvs = querycv("SELECT * FROM `template_cv`");
 $wordpresss = querywp("SELECT * FROM `wp_table`");
-$posters = queryposter("SELECT * FROM `template_poster` ");
+$posters = queryposter("SELECT * FROM `template_poster`");
 
 
 
@@ -116,7 +116,15 @@ $posters = queryposter("SELECT * FROM `template_poster` ");
         </svg>
       </li>
       <li>
-        <a href="" class="text-sm text-gray-400 hover:text-gray-500" href="#">Tools</a>
+        <a href="" class="text-sm text-gray-400 hover:text-gray-500" href="#">Template CV</a>
+      </li>
+      <li class="text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+        </svg>
+      </li>
+      <li>
+        <a href="" class="text-sm text-gray-400 hover:text-gray-500" href="#">Template Poster</a>
       </li>
       <li class="text-gray-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">

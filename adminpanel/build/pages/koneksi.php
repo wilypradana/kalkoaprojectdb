@@ -35,9 +35,10 @@ function querywp($querywp){
     }
 return $rows;
 }
+
 function queryposter($queryposter){
     global $koneksi;
-    $result = mysqli_query($koneksi, $querypos);
+    $result = mysqli_query($koneksi, $queryposter);
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
           $rows[] = $row;
@@ -46,21 +47,7 @@ return $rows;
 
 }
 
-// function add
-function addcv($data){
-    global $koneksi;
 
-    $link = $data["url"];
-    $image = uploadImage();
-    if (!$image) {
-        return false;
-    }
-    $query = "INSERT INTO template_cv (link, image) VALUES ('$link', '$image')";
-
-    mysqli_query($koneksi, $query);
-
-    return mysqli_affected_rows($koneksi);
-}
 
 // function ubah
 function ubahcv($data){
@@ -137,14 +124,16 @@ function ubahwp($data){
     return mysqli_affected_rows($koneksi);
 }
 
-
+// function add
 
 function addppt($data){
     global $koneksi;
 
     $link = $data["link"];
-    $image = $data["image"];
-
+    $image = uploadImageppt();
+    if (!$image) {
+        return false;
+    }
     $query = "INSERT INTO ppt_table (link, image) VALUES ('$link', '$image')";
 
     mysqli_query($koneksi, $query);
@@ -152,14 +141,30 @@ function addppt($data){
     return mysqli_affected_rows($koneksi);
 }
 
+function addcv($data){
+    global $koneksi;
+
+    $link = $data["url"];
+    $image = uploadImageCv();
+    if (!$image) {
+        return false;
+    }
+    $query = "INSERT INTO template_cv (link, image) VALUES ('$link', '$image')";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
 
 function addwp($data){
     global $koneksi;
 
     $link = $data["link"];
-    $image = $data["image"];
-
-    $query = "INSERT INTO template_cv (link, image) VALUES ('$link', '$image')";
+    $image = uploadImageWp();
+    if (!$image) {
+        return false;
+    }
+    $query = "INSERT INTO wp_table (link, image) VALUES ('$link', '$image')";
 
     mysqli_query($koneksi, $query);
 
@@ -170,8 +175,10 @@ function addposter($data){
     global $koneksi;
 
     $link = $data["link"];
-    $image = $data["image"];
-
+    $image = uploadImageposter();
+    if (!$image) {
+        return false;
+    }
     $query = "INSERT INTO template_poster (link, image) VALUES ('$link', '$image')";
 
     mysqli_query($koneksi, $query);
@@ -188,7 +195,7 @@ function hapus($id, $table){
 
 // function image
 
-function uploadImage(){
+function uploadImageCv(){
     
 
     $namaFile = $_FILES["gambar"]["name"]; 
@@ -230,9 +237,154 @@ function uploadImage(){
 
     $namaFileBaru = uniqid();
     $namaFileBaru .= $ekstensiGambar;
-    move_uploaded_file($tmp, "/opt/lampp/htdocs/kalkoaProject/assets/cv/" . $namaFile);
+    move_uploaded_file($tmp, "/opt/lampp/htdocs/kalkoaprojectdb/assets/cv/" . $namaFileBaru);
 
-    return $namaFile;
+
+    return $namaFileBaru;
+}
+
+function uploadImageWp(){
+    
+
+    $namaFile = $_FILES["gambar"]["name"]; 
+    $ukuranFile = $_FILES["gambar"]["size"]; 
+    $tmp = $_FILES["gambar"]["tmp_name"]; 
+    $error = $_FILES["gambar"]["error"]; 
+
+    if ($error === 4 ) {
+        echo "
+        <script>
+        alert('pilih gambar')
+        </script>
+        "; 
+        return false;
+    }
+
+    // cek hanya gambar yang di upload
+
+    $ekstensiGambarValid = ["jpg", "jpeg", "png"];
+    $ekstensiGambar = explode(".", $namaFile);
+    $ekstensiGambar =strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "
+        <script>
+        alert('ekstensi gambar tidak sesuai')
+        </script>
+        "; 
+        return false;
+    }
+
+    if ($ukuranFile > 3145728) {
+        echo "
+        <script>
+        alert('ukuran gambar terlalu besar')
+        </script>
+        "; 
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmp, "/opt/lampp/htdocs/kalkoaprojectdb/assets/wptemplate/" . $namaFileBaru);
+
+
+    return $namaFileBaru;
+}
+
+function uploadImageppt(){
+    
+
+    $namaFile = $_FILES["gambar"]["name"]; 
+    $ukuranFile = $_FILES["gambar"]["size"]; 
+    $tmp = $_FILES["gambar"]["tmp_name"]; 
+    $error = $_FILES["gambar"]["error"]; 
+
+    if ($error === 4 ) {
+        echo "
+        <script>
+        alert('pilih gambar')
+        </script>
+        "; 
+        return false;
+    }
+
+    // cek hanya gambar yang di upload
+
+    $ekstensiGambarValid = ["jpg", "jpeg", "png"];
+    $ekstensiGambar = explode(".", $namaFile);
+    $ekstensiGambar =strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "
+        <script>
+        alert('ekstensi gambar tidak sesuai')
+        </script>
+        "; 
+        return false;
+    }
+
+    if ($ukuranFile > 3145728) {
+        echo "
+        <script>
+        alert('ukuran gambar terlalu besar')
+        </script>
+        "; 
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmp, "/opt/lampp/htdocs/kalkoaprojectdb/assets/ppt/" . $namaFileBaru);
+
+
+    return $namaFileBaru;
+}
+
+function uploadImageposter(){
+    
+
+    $namaFile = $_FILES["gambar"]["name"]; 
+    $ukuranFile = $_FILES["gambar"]["size"]; 
+    $tmp = $_FILES["gambar"]["tmp_name"]; 
+    $error = $_FILES["gambar"]["error"]; 
+
+    if ($error === 4 ) {
+        echo "
+        <script>
+        alert('pilih gambar')
+        </script>
+        "; 
+        return false;
+    }
+
+    // cek hanya gambar yang di upload
+
+    $ekstensiGambarValid = ["jpg", "jpeg", "png"];
+    $ekstensiGambar = explode(".", $namaFile);
+    $ekstensiGambar =strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "
+        <script>
+        alert('ekstensi gambar tidak sesuai')
+        </script>
+        "; 
+        return false;
+    }
+
+    if ($ukuranFile > 3145728) {
+        echo "
+        <script>
+        alert('ukuran gambar terlalu besar')
+        </script>
+        "; 
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmp, "/opt/lampp/htdocs/kalkoaprojectdb/assets/poster/" . $namaFileBaru);
+
+
+    return $namaFileBaru;
 }
 
 ?>
