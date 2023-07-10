@@ -16,15 +16,16 @@ $poster = queryposter("SELECT * FROM `template_poster`");
   <body>
     <div class="container" style="margin-top: 90px;">
         <div class="row">
-            <?php foreach($poster as $poster) : ?>
+            <?php foreach($poster as $posters) : ?>
+ 
           <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
             <div class="card">
-              <img src="../../../assets/poster/<?=  $poster["image"] ?>" class="card-img-top" alt="...">
+              <img src="../../../../assets/poster/<?=  $posters["image"] ?>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">template poster</h5>
                 <p class="card-text">ubah link mati dan delete jika kena copyright</p>
-                <a href="../delete/hapus.php?id=<?=  $poster["id"] ?>&table=template_poster" class="btn btn-warning">delete</a>
-                <a href="../ubah/ubah.php?id=<?=  $poster["id"] ?>" class="btn btn-success">edit</a>
+                <a href="../delete/hapus.php?id=<?=  $posters["id"] ?>&table=template_poster" class="btn btn-warning">delete</a>
+                <a href="../ubah/ubah.php?id=<?=  $posters["id"] ?>" class="btn btn-success">edit</a>
               </div>
             </div>
           </div>

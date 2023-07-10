@@ -158,7 +158,7 @@ function addcv($data){
 
 function addwp($data){
     global $koneksi;
-
+    
     $link = $data["link"];
     $image = uploadImageWp();
     if (!$image) {
@@ -262,7 +262,7 @@ function uploadImageWp(){
 
     // cek hanya gambar yang di upload
 
-    $ekstensiGambarValid = ["jpg", "jpeg", "png"];
+    $ekstensiGambarValid = ["jpg", "jpeg", "png", "webp"];
     $ekstensiGambar = explode(".", $namaFile);
     $ekstensiGambar =strtolower(end($ekstensiGambar));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
@@ -358,7 +358,7 @@ function uploadImageposter(){
 
     // cek hanya gambar yang di upload
 
-    $ekstensiGambarValid = ["jpg", "jpeg", "png"];
+    $ekstensiGambarValid = ["jpg", "jpeg", "png","webp"];
     $ekstensiGambar = explode(".", $namaFile);
     $ekstensiGambar =strtolower(end($ekstensiGambar));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {

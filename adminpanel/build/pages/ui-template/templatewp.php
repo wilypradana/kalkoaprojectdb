@@ -1,6 +1,7 @@
 <?php 
 require("../koneksi.php");
 $wps = querywp("SELECT * FROM `wp_table`");
+
 ?>
 
 
@@ -17,6 +18,7 @@ $wps = querywp("SELECT * FROM `wp_table`");
         <div class="row">
             <?php foreach($wps as $wp) : ?>
           <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+         
             <div class="card">
               <img src="../../../../assets/wptemplate/<?=  $wp["image"] ?>" class="card-img-top" alt="...">
               <div class="card-body">
