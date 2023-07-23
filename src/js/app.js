@@ -64,7 +64,7 @@ function createGameElement(index) {
   const gameElement = document.createElement("a");
   gameElement.href = gameUrl;
   gameElement.className =
-    "w-full sm:w-1/2 md:w-1/4 relative block overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat";
+    "w-full sm:w-1/2 md:w-1/4   relative block overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat";
   gameElement.style.backgroundImage = `url(${gameThumbnail})`;
   const gameContent = document.createElement("div");
   gameContent.className =
