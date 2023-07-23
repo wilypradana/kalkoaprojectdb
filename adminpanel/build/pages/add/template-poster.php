@@ -1,7 +1,15 @@
-<?php 
+<?php
+session_start(); // Memulai session
+
 require "../koneksi.php";
 
-if ( isset($_POST["submit"])) {
+// Jika pengguna belum login, arahkan ke halaman login
+if (!isset($_SESSION["username"])) {
+  header("Location: ../../pages/sign-in.php");
+  exit;
+}
+
+if (isset($_POST["submit"])) {
   if (addposter($_POST) > 0) {
     echo "
     <script>
@@ -9,12 +17,11 @@ if ( isset($_POST["submit"])) {
     </script>
     
     ";
-  }else{
-    echo "gagal"; 
+  } else {
+    echo "gagal";
   }
 }
-
- ?>
+?>
 
 <!doctype html>
 <html>

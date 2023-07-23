@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../../assets/favicon.ico"
+      type="image/x-icon"
+    />
     <title>About US</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css"
       rel="stylesheet"
@@ -13,7 +18,7 @@
   </head>
   <body>
     <nav class="relative px-4 py-4 flex justify-between items-center">
-      <a class="text-3xl font-bold leading-none" href="#">
+      <a class="text-3xl font-bold leading-none" href="../../">
         <svg class="h-10" alt="logo" viewBox="0 0 10240 10240">
           <path
             xmlns="http://www.w3.org/2000/svg"
@@ -54,11 +59,6 @@
             />
           </svg>
         </li>
-        <li>
-          <a class="text-sm text-gray-400 hover:text-gray-500" href="#minigame"
-            >How to See original creator</a
-          >
-        </li>
         <li class="text-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,10 @@
           </svg>
         </li>
         <li>
-          <a class="text-sm text-gray-400 hover:text-gray-500" href="#ppt"
+          <a
+            class="text-sm text-gray-400 hover:text-gray-500"
+            href="../report-broken-link/"
+            target="_blank"
             >Report broken link</a
           >
         </li>
@@ -134,7 +137,7 @@
             <li class="mb-1">
               <a
                 class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-                href="#ppt"
+                href="../report-broken-link/"
                 >Report broken link</a
               >
             </li>
@@ -169,32 +172,18 @@
         ini dimaksudkan untuk memberikan informasi umum dan tidak bertujuan
         melanggar hak cipta Canva.
       </p>
-      <p class="md:text-2xl font-article mt-8">
+      <p class="md:text-2xl font-article mt-8 mb-10">
         Untuk mengetahui pembuat asli dari template atau konten, silakan ikuti
         petunjuk berikut:
       </p>
-      <video
-        id="my-video"
-        class="video-js"
-        controls
-        preload="auto"
-        width="640"
-        height="264"
-        poster="MY_VIDEO_POSTER.jpg"
-        data-setup="{}"
+      <iframe
+        width="900"
+        height="800"
+        src="https://www.youtube.com/embed/U3tmP16eh38"
+        class="mb-10"
       >
-        <source src="/assets/video/docscanvaproject.ogg" type="video/ogg" />
-        <source src="/assets/video/docscanvaproject.webm" type="video/webm" />
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to
-          a web browser that
-          <a href="https://videojs.com/html5-video-support/" target="_blank"
-            >supports HTML5 video</a
-          >
-        </p>
-      </video>
+      </iframe>
     </div>
-    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
   </body>
